@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <script src="practice.js"></script>
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <script src="https://kit.fontawesome.com/b40b50a1fb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@327&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        font-family: 'Quicksand', sans-serif;
+        /* font-family: Georgia, Times, 'Times New Roman', serif; */
+    }
+    .menu{
+        background:Linear-gradient(rgba(174, 193, 255, 0.884),rgb(150, 160, 253));
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+    .container{
+        margin:20% auto;
+        /* padding-top: 20vh; */
+        /* position: absolute; */
+        /* top: 50%; */
+        /* left: 50%; */
+        
+        background-color: rgb(255, 255, 255);
+        border-radius: 2px;
+        min-height: 100px;
+        align-items: center;
+        width: fit-content;
+        /* border-color: aliceblue; */
+        border-style: solid;
+        border-width: 0;
+    }
+    .todolist{
+        margin: 14px 0px 0px 0px;
+        padding-bottom: 16px;
+        padding-left: 5px;
+        padding-right: 5px;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+    .todo{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 5px;
+        box-sizing: border-box;
+        padding: 0px 0px;
+        margin: 1px 0px;
+        background-color: rgb(187, 31, 208);
+        border-radius: 2px;
+    
+
+    }
+    .search{
+        padding: 0px 10px;
+        padding-right: 0;
+        background-color: aliceblue;
+        line-height: 25px;
+        /* width: fit-content; */
+        display: flex;
+        box-shadow:0px 0px 10px 0px rgba(0, 0, 0,0.2) ;
+    }
+    .search input{
+        background: transparent;
+        border: 0;
+        outline: none;
+    }
+    .search button{
+        background:transparent;
+        background-color: rgb(187, 31, 208);
+
+        width: 40px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+    }
+    .search button .fas{
+        color: aliceblue;
+    }
+    .container h1{
+        text-align: center;
+        color: rgb(0, 0, 0);
+        font-weight:lighter;
+        margin: 10px;
+    }
+    .todo p{
+        padding:0 4px ;
+    }
+    .todo button{
+        /* background:transparent; */
+        width: 23px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="menu">
+        <nav>
+
+            <div class="container">
+                <h1>TODO APP</h1>
+                <div class="search">
+                    <input class="inputfield" type="text" placeholder="Enter">
+                    <button class="buttons"><i class="fas fa-search"></i></button>
+                    
+                </div>
+                <ul class="todolist">
+                    <!-- <li class="todo">
+                        <p>Rahul</p><button><i class="fas fa-trash-alt"></i></button>
+                    </li>
+                    <li class="todo">
+                        <p>Morish</p><button><i class="fas fa-trash-alt"></i></button>
+                    </li>
+                    <li class="todo">
+                        <p>drago</p><button><i class="fas fa-trash-alt"></i></button>
+                    </li> -->
+                </ul>
+                
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
+
+<script>
+    let search=document.getElementsByClassName("search")[0];
+    let but=document.getElementsByClassName("buttons")[0];
+    let inputfield=document.getElementsByClassName("inputfield")[0];
+    let todolist=document.getElementsByClassName("todolist")[0];
+    but.addEventListener('click',(e)=>{
+        console.log(inputfield.value);
+        console.log(search);
+        creatitem(inputfield.value);
+    })
+    function creatitem(e){
+        let ourHTML=`<li class="todo">
+                        <p>${e}</p><button onclick="deleteitem(this)"><i class="fas fa-trash-alt"></i></button>
+                    </li>`
+        todolist.insertAdjacentHTML(
+            "beforeend",ourHTML
+        );
+        inputfield.value="";
+        inputfield.focus()
+    }
+    function deleteitem(elemdelete){
+        elemdelete.parentElement.remove();
+    }
+
+</script>
